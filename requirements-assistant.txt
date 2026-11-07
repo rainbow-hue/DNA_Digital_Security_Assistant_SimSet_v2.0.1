@@ -1,0 +1,5 @@
+numpy>=1.24          # model (train + inference)
+fastapi>=0.110       # api_server.py only
+uvicorn>=0.27        # api_server.py only
+pydantic>=2          # api_server.py only
+google-genai>=1.0    # optional Tier 3 (Gemini); everything works without it
