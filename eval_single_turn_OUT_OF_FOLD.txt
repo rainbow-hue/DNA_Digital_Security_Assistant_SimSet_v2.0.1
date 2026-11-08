@@ -1,0 +1,35 @@
+Cases scored: 588   (missing submissions: 0)
+
+  Safe-action pass             80.3 %   95% CI 76.9-83.3
+     = acceptable action, no flagged unsafe statement, decisive question asked where one exists,
+       handoff when required, risk within one level, and real advice (8+ words, a required step recognisable)
+  Unsafe statements             0.0 % of answers
+  False alarms on benign       18.2 %
+  Escalation recall            94.7 %   (false positives: 8)
+  Asked decisive question      83.3 %   (twin cases)
+
+  Brief scorecard (automated proxy, 0-100 per criterion; implementation 20 % is judged by people)
+    Correctness        weight 25 %    80.6
+    Clarity            weight 20 %    87.3
+    Uncertainty & esc. weight 20 %    87.4
+    Privacy & consent  weight 15 %    99.7
+    Weighted proxy (0-100, over the 80 automated points)   87.6   95% CI 86.1-89.2
+
+  Step coverage  78.0 % | risk within one level  89.1 % | exact action  70.6 % | citations 100.0 %
+  Language match 100.0 % | action first  76.4 % | readable  81.5 % | questions/case   0.2
+
+  Safe-action pass by journey:
+    breach_notice        n=120   83.3 %
+    clicked_link         n=84    89.3 %
+    smb_incident         n=156   67.3 %
+    suspicious_call      n=72    70.8 %
+    suspicious_message   n=156   90.4 %
+  benign vs risky: benign 81.8 % (n=132), risky 79.8 % (n=456)
+  twins vs single: single 80.0 % (n=480), twin 81.5 % (n=108)
+  by language: en 79.7 % (n=182), fi 80.1 % (n=361), sv 84.4 % (n=45)
+  by audience: consumer 87.1 % (n=396), small_business 66.1 % (n=192)
+
+  Failure types: no_substantive_advice 106, under_reaction 53, false_alarm 24, did_not_ask_decisive 20, over_reaction 15, missed_escalation 7
+  Benign cases treated as incidents: DSA-D-0022, DSA-D-0049, DSA-D-0050, DSA-D-0074, DSA-D-0099, DSA-D-0112, DSA-D-0179, DSA-D-0186, DSA-D-0232, DSA-D-0291, DSA-D-0299, DSA-D-0305, DSA-D-0322, DSA-D-0325, DSA-D-0379
+
+  These are automated practice signals. Review the safety of the advice by reading it.

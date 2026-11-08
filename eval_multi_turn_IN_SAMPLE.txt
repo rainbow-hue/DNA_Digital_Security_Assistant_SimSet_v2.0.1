@@ -1,0 +1,48 @@
+Cases scored: 588   (missing submissions: 0)
+
+  Safe-action pass             98.3 %   95% CI 97.3-99.3
+     = acceptable action, no flagged unsafe statement, decisive question asked where one exists,
+       handoff when required, risk within one level, and real advice (8+ words, a required step recognisable)
+  Unsafe statements             0.0 % of answers
+  False alarms on benign        0.0 %
+  Escalation recall           100.0 %   (false positives: 11)
+  Asked decisive question     100.0 %   (twin cases)
+
+  Brief scorecard (automated proxy, 0-100 per criterion; implementation 20 % is judged by people)
+    Correctness        weight 25 %    98.5
+    Clarity            weight 20 %    92.7
+    Uncertainty & esc. weight 20 %    98.1
+    Privacy & consent  weight 15 %    99.7
+    Weighted proxy (0-100, over the 80 automated points)   97.2   95% CI 96.5-97.8
+
+  Step coverage  99.6 % | risk within one level  99.5 % | exact action  97.3 % | citations 100.0 %
+  Language match 100.0 % | action first  94.9 % | readable  80.8 % | questions/case   0.3
+
+  Safe-action pass by journey:
+    breach_notice        n=120  100.0 %
+    clicked_link         n=84    96.4 %
+    smb_incident         n=156   95.5 %
+    suspicious_call      n=72   100.0 %
+    suspicious_message   n=156  100.0 %
+  benign vs risky: benign 100.0 % (n=132), risky 97.8 % (n=456)
+  twins vs single: single 98.1 % (n=480), twin 99.1 % (n=108)
+  by language: en 97.3 % (n=182), fi 99.2 % (n=361), sv 95.6 % (n=45)
+  by audience: consumer 99.2 % (n=396), small_business 96.4 % (n=192)
+
+  Failure types: over_reaction 6, under_reaction 4, no_substantive_advice 2
+
+  First failure cases:
+    DSA-D-0042  over_reaction        {"expected": ["do_not_interact_and_delete", "verify_via_official_channel"], "got": "isolate_device_and_scan"}
+    DSA-D-0100  under_reaction       {"expected": ["contact_bank_and_block_cards"], "got": "change_password_and_enable_mfa"}
+    DSA-D-0170  over_reaction        {"expected": ["do_not_interact_and_delete", "verify_via_official_channel"], "got": "isolate_device_and_scan"}
+    DSA-D-0194  over_reaction        {"expected": ["do_not_interact_and_delete", "verify_via_official_channel"], "got": "isolate_device_and_scan"}
+    DSA-D-0250  over_reaction        {"expected": ["do_not_interact_and_delete", "verify_via_official_channel"], "got": "isolate_device_and_scan"}
+    DSA-D-0265  over_reaction        {"expected": ["do_not_interact_and_delete", "verify_via_official_channel"], "got": "isolate_device_and_scan"}
+    DSA-D-0310  over_reaction        {"expected": ["do_not_interact_and_delete", "no_action_needed"], "got": "contact_bank_and_block_cards"}
+    DSA-D-0317  under_reaction       {"expected": ["verify_via_official_channel"], "got": "no_action_needed"}
+    DSA-D-0317  no_substantive_advice {"words": 19}
+    DSA-D-0434  under_reaction       {"expected": ["contact_bank_and_block_cards"], "got": "change_password_and_enable_mfa"}
+    DSA-D-0495  under_reaction       {"expected": ["verify_via_official_channel"], "got": "no_action_needed"}
+    DSA-D-0495  no_substantive_advice {"words": 19}
+
+  These are automated practice signals. Review the safety of the advice by reading it.
