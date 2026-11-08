@@ -52,17 +52,6 @@ uvicorn api_server:app --host 0.0.0.0 --port 8000
 
 Why the final model is trained on 100%: the 80/20 split (and the CV) is how you *measure* overfitting and choose settings. Once you've chosen, retraining on all the labelled data is standard practice. Report the split/CV numbers as your estimate, not the score on data the model was trained on.
 
-## Results (dsakit.scoring, same held-out cases for both systems)
-
-| Setting | Model pass | Rules pass | Model proxy | Rules proxy |
-|---|---|---|---|---|
-| 5-fold CV, held-out **families**, single-turn | 77.9 % | 60.7 % | 84.0 | 67.2 |
-| 5-fold CV, held-out **families**, multi-turn (simulated user) | 79.3 % | 65.5 % | 84.1 | 69.1 |
-| 80/20 twin-grouped split (seen families), single-turn | 95.7 % | 59.5 % | 95.9 | 67.4 |
-| 80/20 twin-grouped split (seen families), multi-turn | 94.8 % | 63.8 % | 95.3 | 69.4 |
-
-Caveats to report: the generic expert rules were written while looking at dev family titles and failures, so even the family-CV numbers are somewhat optimistic for truly new families. Our weakest point on held-out families is **false alarms on benign look-alikes (about 22 %)**. On 100 % of dev (training data) it scores 98.5 %. That number is not an estimate of anything.
-
 ## Mobile app contract (`POST /api/chat`)
 
 Request: `{"message": "...", "session_id": "<from last reply or omit>", "language": "fi|en|sv (optional)", "signals": {...optional...}, "pre_granted": [...], "consent": {"granted": [...]}}`
@@ -70,16 +59,6 @@ Request: `{"message": "...", "session_id": "<from last reply or omit>", "languag
 Response: `session_id`, `reply_type` (`question` | `consent_request` | `final`), `display_text` (show this), `question{text,topic}`, `consent_request{fields,text}`, and `answer`. On `final`, `answer` is exactly the assignment's submission object: `risk_level, primary_action, advice_text, escalation_required, escalation_target, urgency, steps, questions_asked, question_topics, signals_used, consent_requested_for, citations, confidence, abstained`.
 
 UI suggestions: render `consent_request` with Allow / Don't allow buttons. On `final`, show `steps` as a checklist and a "Talk to a person" button when `escalation_required`. Always send back `session_id`. A new problem means `reset: true`.
-
-Example (your screenshot case):
-
-```
-USER: Someone called from security support and i installed a remote support program ... controlled my computer for half an hour
-BOT  [question]  Did you log in to your online bank or type any password while this was going on?
-USER: yes I logged into my online bank while he was connected
-BOT  [final]     contact_bank_and_block_cards / critical / hand-off security_specialist
-     "Disconnect the device from the internet now ... Contact your bank right away ... A security specialist from our team can guide you ..."
-```
 
 ## Safety design
 
